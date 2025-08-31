@@ -3,7 +3,7 @@
 	"Version": 1,
 	"VersionName": "1.0",
 	"FriendlyName": "FishyWorldSpaceWidgets",
-	"Description": "A simple plugin adding more optimized world space widgets",
+	"Description": "A simple UE5 plugin adding more optimized world space widgets",
 	"Category": "Other",
 	"CreatedBy": "hzFishy",
 	"CreatedByURL": "https://hzfishy.fr",
