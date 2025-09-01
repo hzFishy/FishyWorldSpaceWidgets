@@ -9,7 +9,7 @@
 class UOverlaySlot;
 
 
-struct FFWSWorldSpaceContainerEntry
+struct FISHYWORLDSPACEWIDGETS_API FFWSWorldSpaceContainerEntry
 {
 	FFWSWorldSpaceContainerEntry(const FFWSWorldSpaceSubsystemParams& InParams);
 	
@@ -24,8 +24,10 @@ struct FFWSWorldSpaceContainerEntry
  * Widgets are automatically removed if invalid.
  * 
  * This is meant to be unique by player.
+ * 
+ * You MUST implement K2_AddWidgetToContainer.
  */
-UCLASS(ClassGroup=FishyWorldSpaceWidgets)
+UCLASS(ClassGroup=FishyWorldSpaceWidgets, DisplayName="World Space Container Widget")
 class FISHYWORLDSPACEWIDGETS_API UFWSWorldSpaceContainerWidget : public UUserWidget
 {
 	GENERATED_BODY()

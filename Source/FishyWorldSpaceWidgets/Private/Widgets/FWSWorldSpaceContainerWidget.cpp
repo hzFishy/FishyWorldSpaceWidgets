@@ -32,11 +32,15 @@ void UFWSWorldSpaceContainerWidget::AddWidget(const FFWSWorldSpaceSubsystemParam
 	
 	FFWSWorldSpaceContainerEntry NewEntry(Params);
 	NewEntry.OverlaySlot = K2_AddWidgetToContainer(Params.TargetUserWidget.Get());
-	ManagedEntries.Add(NewEntry);
+	if (ensureAlways(NewEntry.OverlaySlot.IsValid()))
+	{
+		ManagedEntries.Emplace(NewEntry);
+	}
 }
 
 void UFWSWorldSpaceContainerWidget::TickEntries()
 {
+	// TODO: compare distances between valid entries for Z order (closest entries above furthest)
 	for (int i = ManagedEntries.Num() - 1; i >= 0; i--)
 	{
 		const auto& Entry = ManagedEntries[i];

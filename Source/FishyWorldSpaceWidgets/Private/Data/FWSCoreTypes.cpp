@@ -8,7 +8,7 @@ FFWSWorldSpaceSubsystemParams::FFWSWorldSpaceSubsystemParams():
 	bRemoveIfInvalidatedTargetSceneComponent(true)
 {}
 
-const FVector& FFWSWorldSpaceSubsystemParams::GetFinalTargetLocation() const
+FVector FFWSWorldSpaceSubsystemParams::GetFinalTargetLocation() const
 {
 	return TargetSceneComponent.IsValid() ? TargetSceneComponent->GetComponentLocation() : TargetLocation;
 }

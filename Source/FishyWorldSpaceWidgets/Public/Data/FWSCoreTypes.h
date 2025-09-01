@@ -5,8 +5,8 @@
 #include "FWSCoreTypes.generated.h"
 
 
-USTRUCT(BlueprintType, DisplayName)
-struct FFWSWorldSpaceSubsystemParams
+USTRUCT(BlueprintType, DisplayName="World Space Subsystem Params")
+struct FISHYWORLDSPACEWIDGETS_API FFWSWorldSpaceSubsystemParams
 {
 	GENERATED_BODY()
 
@@ -29,5 +29,5 @@ struct FFWSWorldSpaceSubsystemParams
 	bool bRemoveIfInvalidatedTargetSceneComponent;
 
 	/** Return the final target location we will use */
-	const FVector& GetFinalTargetLocation() const;
+	FVector GetFinalTargetLocation() const;
 };

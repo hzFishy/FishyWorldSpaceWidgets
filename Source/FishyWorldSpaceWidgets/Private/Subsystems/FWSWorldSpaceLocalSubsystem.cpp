@@ -2,7 +2,7 @@
 
 
 #include "Subsystems/FWSWorldSpaceLocalSubsystem.h"
-#include "FWSWorldSpaceContainerWidgetGetter.h"
+#include "Interfaces/FWSWorldSpaceContainerWidgetGetter.h"
 #include "GameFramework/HUD.h"
 #include "Widgets/FWSWorldSpaceContainerWidget.h"
 
@@ -35,9 +35,10 @@ void UFWSWorldSpaceLocalSubsystem::AddWorldSpaceWidget(const FFWSWorldSpaceSubsy
 {
 	if (PlayerController.IsValid() && IsValid(PlayerController->GetHUD()))
 	{
-		if (PlayerController->GetHUD()->Implements<UFWSWorldSpaceContainerWidgetGetter>())
+		if (ensureAlways(PlayerController->GetHUD()->Implements<UFWSWorldSpaceContainerWidgetGetter>()))
 		{
-			if (auto* Container = IFWSWorldSpaceContainerWidgetGetter::Execute_GetWorldSpaceContainerWidget(PlayerController->GetHUD()))
+			auto* Container = IFWSWorldSpaceContainerWidgetGetter::Execute_GetWorldSpaceContainerWidget(PlayerController->GetHUD());
+			if (ensureAlways(Container))
 			{
 				Container->AddWidget(Params);
 			}
