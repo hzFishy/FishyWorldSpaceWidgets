@@ -23,11 +23,11 @@ struct FISHYWORLDSPACEWIDGETS_API FFWSWorldSpaceContainerEntry
  * Contains widgets displayed in screen space from target data.
  * Widgets are automatically removed if invalid.
  * 
- * This is meant to be unique by player.
+ * This is meant to be unique for one player.
  * 
- * You MUST implement K2_AddWidgetToContainer.
+ * You MUST implement K2_AddWidgetToContainer with an Overlay.
  */
-UCLASS(ClassGroup=FishyWorldSpaceWidgets, DisplayName="World Space Container Widget")
+UCLASS(ClassGroup=FishyWorldSpaceWidgets, DisplayName="World Space Container Widget", Abstract)
 class FISHYWORLDSPACEWIDGETS_API UFWSWorldSpaceContainerWidget : public UUserWidget
 {
 	GENERATED_BODY()
@@ -55,7 +55,8 @@ public:
 	
 protected:
 	virtual void TickEntries();
-	
+
+	/** This uses overlay slots */
 	UFUNCTION(BlueprintImplementableEvent, DisplayName="Add Widget To Container")
 	UOverlaySlot* K2_AddWidgetToContainer(UUserWidget* Widget);
 };
